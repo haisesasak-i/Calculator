@@ -6,10 +6,13 @@ numbersContainer.addEventListener("click", (event) => {
     if (!event.target.matches(".number")) {
         return;
     }
+    const belowDisplay = document.querySelector("below-display");
+
+
+
 
 });
 
-console.log(numbersContainer);
 function add(firstNumber = 0, secondNumber = 0) {
     return firstNumber + secondNumber;
 }
