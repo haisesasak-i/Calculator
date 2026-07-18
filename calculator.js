@@ -16,8 +16,11 @@ function updateCalculatorDisplayWithOperator(event, aboveDisplay, belowDisplay) 
     if (!event.target.matches(".operator")) {
         return;
     }
+    
 }
-
+function clearDisplay(display) {
+    display.textContent = "";
+}
 function add(firstNumber = 0, secondNumber = 0) {
     return firstNumber + secondNumber;
 }
