@@ -21,6 +21,7 @@ operatorsContainer.addEventListener("click", (event) => {
     }
     if (event.target.matches(".equal")) {
         performCalculation(calculatorBelowDisplay, calculatorAboveDisplay);
+        return;
     }
     updateCalculatorDisplayWithOperator(event, calculatorAboveDisplay, calculatorBelowDisplay);
 });
@@ -59,9 +60,9 @@ function operate(firstNumber, secondNumber, operation) {
             return add(firstNumber, secondNumber);
         case "-":
             return subtract(firstNumber, secondNumber);
-        case "*":
+        case "×":
             return multiply(firstNumber, secondNumber);
-        case "/":
+        case "÷":
             return secondNumber === 0 ? "MATH ERROR" : divide(firstNumber, secondNumber);
         default:
             return "MATH ERROR";
