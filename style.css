@@ -138,10 +138,6 @@ button:nth-child(10).number {
     flex-grow: 1;
 }
 
-
-
-
-
 .operators {
 
     flex-direction: column;

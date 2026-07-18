@@ -1,3 +1,15 @@
+const numbersContainer = document.querySelector(".numbers");
+numbersContainer.addEventListener("click", (event) => {
+    //user can click on the gap between the buttons and that can cause the click event to get
+    //activated on container. SO, this following validation explicitly let only numbers to pass 
+    //through
+    if (!event.target.matches(".number")) {
+        return;
+    }
+
+});
+
+console.log(numbersContainer);
 function add(firstNumber = 0, secondNumber = 0) {
     return firstNumber + secondNumber;
 }
