@@ -16,7 +16,8 @@ function updateCalculatorDisplayWithOperator(event, aboveDisplay, belowDisplay) 
     if (!event.target.matches(".operator")) {
         return;
     }
-    
+    aboveDisplay.textContent = `${belowDisplay.textContent} ${event.target.textContent}`
+
 }
 function clearDisplay(display) {
     display.textContent = "";
