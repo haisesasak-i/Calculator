@@ -18,11 +18,10 @@ operatorsContainer.addEventListener("click", (event) => {
     if (!event.target.matches(".operator")) {
         return;
     }
-    if (event.target.matches(".equal")) {
+    if (!operatorValidation(calculatorBelowDisplay) && !operatorValidation(calculatorAboveDisplay)) {
         performCalculation(calculatorBelowDisplay, calculatorAboveDisplay);
-        return;
     }
-    if (!operatorValidation(calculatorBelowDisplay)) {
+    if (!operatorValidation(calculatorBelowDisplay) && !event.target.matches(".equal")) {
         updateCalculatorDisplayWithOperator(event, calculatorAboveDisplay, calculatorBelowDisplay);
     }
 });
@@ -35,9 +34,6 @@ function updateCalculatorDisplayWithOperator(event, calculatorAboveDisplay, calc
 
 }
 function performCalculation(calculatorBelowDisplay, calculatorAboveDisplay) {
-    if (operatorValidation(calculatorBelowDisplay) || operatorValidation(calculatorAboveDisplay)) {
-        return;
-    }
     let numberAndOperator = calculatorAboveDisplay.textContent.split(" ");
     let firstNumber = +numberAndOperator[0];
     let operator = numberAndOperator[1];
