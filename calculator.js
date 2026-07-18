@@ -9,7 +9,9 @@ clearAndDelete.addEventListener("click", (event) => {
         clearButton(calculatorAboveDisplay, calculatorBelowDisplay);
     }
     else if (event.target.matches(".delete")) {
-
+        if (calculatorBelowDisplay) {
+            calculatorBelowDisplay.textContent = calculatorBelowDisplay.textContent.slice(0, -1);
+        }
     }
     return;
 });
