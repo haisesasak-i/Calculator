@@ -41,7 +41,6 @@ div.calculator {
 
 .display {
     border: 3px solid #45464c;
-    width: 100%;
     height: 150px;
     border-radius: 12px;
     background-color: #17181c;
