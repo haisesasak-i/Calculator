@@ -9,15 +9,22 @@ clearAndDelete.addEventListener("click", (event) => {
         clearButton(calculatorAboveDisplay, calculatorBelowDisplay);
     }
     else if (event.target.matches(".delete")) {
-        if (calculatorBelowDisplay) {
-            calculatorBelowDisplay.textContent = calculatorBelowDisplay.textContent.slice(0, -1);
-        }
+        deleteButton(calculatorAboveDisplay, calculatorBelowDisplay);
     }
     return;
 });
 function clearButton(calculatorAboveDisplay, calculatorBelowDisplay) {
     clearDisplay(calculatorAboveDisplay);
     clearDisplay(calculatorBelowDisplay);
+}
+function deleteButton(calculatorAboveDisplay, calculatorBelowDisplay) {
+    if (calculatorBelowDisplay.textContent && calculatorBelowDisplay.textContent != "MATH ERROR") {
+        calculatorBelowDisplay.textContent = calculatorBelowDisplay.textContent.slice(0, -1);
+    }
+    else if (calculatorAboveDisplay.textContent && calculatorAboveDisplay.textContent != ("Result")) {
+        calculatorBelowDisplay.textContent = calculatorAboveDisplay.textContent.slice(0, -1).trimEnd();
+        clearDisplay(calculatorAboveDisplay);
+    }
 }
 numbersContainer.addEventListener("click", (event) => {
     //user can click on the gap between the buttons and that can cause the click event to get
