@@ -17,6 +17,11 @@ body {
     height: 100vh;
 }
 
+div.calculator,
+div.display {
+    flex-direction: column;
+}
+
 div.calculator {
     width: 500px;
     height: 700px;
@@ -29,7 +34,7 @@ div.calculator {
             #C026D3,
             #FF8A00) border-box;
     border-radius: 30px;
-    flex-direction: column;
+
     padding: 15px;
     gap: 10px
 }
@@ -37,9 +42,33 @@ div.calculator {
 .display {
     border: 3px solid #45464c;
     width: 100%;
-    height: 220px;
+    height: 150px;
     border-radius: 12px;
     background-color: #17181c;
+    padding: 12px;
+
+    justify-content: space-between;
+}
+
+.display .above-display,
+.display .below-display {
+    text-align: right;
+
+    Letter-spacing: 0.5px;
+}
+
+.display .above-display {
+
+
+    font-size: 2.5rem;
+    color: grey;
+    font-weight: 500;
+}
+
+.display .below-display {
+    Color: #F5F7FA;
+    font-size: 3rem;
+    font-weight: 700;
 }
 
 .buttons-menu {
