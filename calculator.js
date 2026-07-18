@@ -1,5 +1,6 @@
 const numbersContainer = document.querySelector(".numbers");
-numbersContainer.addEventListener("click", (event) => {
+numbersContainer.addEventListener("click", updateCalculatorDisplay);
+function updateCalculatorDisplay(event) {
     //user can click on the gap between the buttons and that can cause the click event to get
     //activated on container. SO, this following validation explicitly let only numbers to pass 
     //through
@@ -8,10 +9,7 @@ numbersContainer.addEventListener("click", (event) => {
     }
     const belowDisplay = document.querySelector(".below-display");
     belowDisplay.textContent = belowDisplay.textContent + event.target.textContent;
-
-
-
-});
+}
 
 function add(firstNumber = 0, secondNumber = 0) {
     return firstNumber + secondNumber;
