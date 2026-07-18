@@ -2,24 +2,27 @@ const numbersContainer = document.querySelector(".numbers");
 const operatorsContainer = document.querySelector(".operators");
 const belowDisplay = document.querySelector(".below-display");
 const aboveDisplay = document.querySelector(".above-display");
-numbersContainer.addEventListener("click", (event) => updateCalculatorDisplayWithDigit(event, belowDisplay));
-function updateCalculatorDisplayWithDigit(event, belowDisplay) {
+numbersContainer.addEventListener("click", (event) => {
     //user can click on the gap between the buttons and that can cause the click event to get
     //activated on container. SO, this following validation explicitly let only numbers to pass 
     //through
+
     if (!event.target.matches(".number")) {
         return;
     }
-
+    updateCalculatorDisplayWithDigit(event, belowDisplay);
+});
+function updateCalculatorDisplayWithDigit(event, belowDisplay) {
     belowDisplay.textContent = belowDisplay.textContent + event.target.textContent;
 }
 operatorsContainer.addEventListener("click", (event) => {
-    updateCalculatorDisplayWithOperator(event, aboveDisplay, belowDisplay);
-})
-function updateCalculatorDisplayWithOperator(event, aboveDisplay, belowDisplay) {
     if (!event.target.matches(".operator")) {
         return;
     }
+    updateCalculatorDisplayWithOperator(event, aboveDisplay, belowDisplay);
+})
+function updateCalculatorDisplayWithOperator(event, aboveDisplay, belowDisplay) {
+
     //This transfer of text content form below display of calculator to above will help in checking things like 
     //if there is only one operator or one point is used with a number
     //The use of space is because it will help in extracting multi digits using split method like 1000 + 
