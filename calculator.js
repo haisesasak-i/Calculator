@@ -6,7 +6,6 @@ numbersContainer.addEventListener("click", (event) => {
     //user can click on the gap between the buttons and that can cause the click event to get
     //activated on container. SO, this following validation explicitly let only numbers to pass 
     //through
-
     if (!event.target.matches(".number")) {
         return;
     }
@@ -23,7 +22,7 @@ operatorsContainer.addEventListener("click", (event) => {
         performCalculation(calculatorBelowDisplay, calculatorAboveDisplay);
         return;
     }
-    if (!(operatorValidation(calculatorBelowDisplay))) {
+    if (!operatorValidation(calculatorBelowDisplay)) {
         updateCalculatorDisplayWithOperator(event, calculatorAboveDisplay, calculatorBelowDisplay);
     }
 });
@@ -36,7 +35,7 @@ function updateCalculatorDisplayWithOperator(event, calculatorAboveDisplay, calc
 
 }
 function performCalculation(calculatorBelowDisplay, calculatorAboveDisplay) {
-    if (operatorValidation(calculatorAboveDisplay) || operate(calculatorAboveDisplay)) {
+    if (operatorValidation(calculatorBelowDisplay) || operatorValidation(calculatorAboveDisplay)) {
         return;
     }
     let numberAndOperator = calculatorAboveDisplay.textContent.split(" ");
