@@ -6,10 +6,15 @@
 
 }
 
-
+.flex {
+    display: flex;
+}
 
 body {
     background-color: #0D0F14;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 div.calculator {
