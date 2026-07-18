@@ -1,14 +1,21 @@
 const numbersContainer = document.querySelector(".numbers");
-numbersContainer.addEventListener("click", updateCalculatorDisplay);
-function updateCalculatorDisplay(event) {
+const belowDisplay = document.querySelector(".below-display");
+const aboveDisplay = document.querySelector(".above-display");
+numbersContainer.addEventListener("click", (event) => updateCalculatorDisplay(event, belowDisplay));
+function updateCalculatorDisplayWithDigit(event, belowDisplay) {
     //user can click on the gap between the buttons and that can cause the click event to get
     //activated on container. SO, this following validation explicitly let only numbers to pass 
     //through
     if (!event.target.matches(".number")) {
         return;
     }
-    const belowDisplay = document.querySelector(".below-display");
+
     belowDisplay.textContent = belowDisplay.textContent + event.target.textContent;
+}
+function updateCalculatorDisplayWithOperator(event, aboveDisplay, belowDisplay) {
+    if (!event.target.matches(".operator")) {
+        return;
+    }
 }
 
 function add(firstNumber = 0, secondNumber = 0) {
