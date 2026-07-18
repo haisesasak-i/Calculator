@@ -23,7 +23,9 @@ operatorsContainer.addEventListener("click", (event) => {
         performCalculation(calculatorBelowDisplay, calculatorAboveDisplay);
         return;
     }
-    updateCalculatorDisplayWithOperator(event, calculatorAboveDisplay, calculatorBelowDisplay);
+    if (!(operatorValidation(calculatorBelowDisplay))) {
+        updateCalculatorDisplayWithOperator(event, calculatorAboveDisplay, calculatorBelowDisplay);
+    }
 });
 function updateCalculatorDisplayWithOperator(event, calculatorAboveDisplay, calculatorBelowDisplay) {
     //This transfer of text content form below display of calculator to above will help in checking things like 
@@ -34,6 +36,9 @@ function updateCalculatorDisplayWithOperator(event, calculatorAboveDisplay, calc
 
 }
 function performCalculation(calculatorBelowDisplay, calculatorAboveDisplay) {
+    if (operatorValidation(calculatorAboveDisplay) || operate(calculatorAboveDisplay)) {
+        return;
+    }
     let numberAndOperator = calculatorAboveDisplay.textContent.split(" ");
     let firstNumber = +numberAndOperator[0];
     let operator = numberAndOperator[1];
@@ -69,6 +74,12 @@ function operate(firstNumber, secondNumber, operation) {
         default:
             return "MATH ERROR";
     }
+}
+function operatorValidation(display) {
+    return display.textContent === "";
+    //the operator event listener always transfers the content of calculator below display to above 
+    //and then add symbol of operator , so if user taps operator without entering number then below display
+    //will always be empty
 }
 
 
