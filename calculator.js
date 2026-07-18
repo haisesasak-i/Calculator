@@ -6,8 +6,8 @@ numbersContainer.addEventListener("click", (event) => {
     if (!event.target.matches(".number")) {
         return;
     }
-    const belowDisplay = document.querySelector("below-display");
-
+    const belowDisplay = document.querySelector(".below-display");
+    belowDisplay.textContent = belowDisplay.textContent + event.target.textContent;
 
 
 
