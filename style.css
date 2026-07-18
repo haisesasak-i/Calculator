@@ -29,5 +29,20 @@ div.calculator {
             #C026D3,
             #FF8A00) border-box;
     border-radius: 30px;
+    flex-direction: column;
+    padding: 15px;
+    gap: 10px
+}
 
+.display {
+    border: 3px solid #45464c;
+    width: 100%;
+    height: 220px;
+    border-radius: 12px;
+    background-color: #17181c;
+}
+
+.buttons-menu {
+    border: 2px solid rgb(21, 200, 161);
+    flex: 1;
 }
