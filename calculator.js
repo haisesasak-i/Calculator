@@ -10,3 +10,19 @@ function multiply(firstNumber = 0, secondNumber = 0) {
 function divide(firstNumber = 0, secondNumber = 1) {
     return firstNumber / secondNumber;
 }
+function operate(firstNumber, secondNumber, operation) {
+    switch (operation) {
+        case "+":
+            return add(firstNumber, secondNumber);
+        case "-":
+            return subtract(firstNumber, secondNumber);
+        case "*":
+            return multiply(firstNumber, secondNumber);
+        case "/":
+            return secondNumber === 0 ? "MATH ERROR" : divide(firstNumber, secondNumber);
+        default:
+            return "MATH ERROR";
+    }
+}
+
+
