@@ -20,6 +20,14 @@ body {
 div.calculator {
     width: 500px;
     height: 700px;
-    border: 2px solid white;
+    border: 4px solid transparent;
+    background:
+        linear-gradient(#171A21, #171A21) padding-box,
+        linear-gradient(to bottom right,
+            #6D5CFF,
+            #8B5CF6,
+            #C026D3,
+            #FF8A00) border-box;
+    border-radius: 30px;
 
 }
