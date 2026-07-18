@@ -38,6 +38,8 @@ function performCalculation(calculatorBelowDisplay, calculatorAboveDisplay) {
     let firstNumber = +numberAndOperator[0];
     let operator = numberAndOperator[1];
     let secondNumber = +calculatorBelowDisplay.textContent;
+    calculatorAboveDisplay.textContent = "";
+    calculatorBelowDisplay.textContent = operate(firstNumber, secondNumber, operator);
 }
 function clearDisplay(display) {
     display.textContent = "";
