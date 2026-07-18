@@ -2,12 +2,31 @@ const numbersContainer = document.querySelector(".numbers");
 const operatorsContainer = document.querySelector(".operators");
 const calculatorBelowDisplay = document.querySelector(".below-display");
 const calculatorAboveDisplay = document.querySelector(".above-display");
+const clearAndDelete = document.querySelector(".clear-delete");
+clearAndDelete.addEventListener("click", (event) => {
+    if (event.target.matches(".clear")) {
+
+        clearButton(calculatorAboveDisplay, calculatorBelowDisplay);
+    }
+    else if (event.target.matches(".delete")) {
+
+    }
+    return;
+});
+function clearButton(calculatorAboveDisplay, calculatorBelowDisplay) {
+    clearDisplay(calculatorAboveDisplay);
+    clearDisplay(calculatorBelowDisplay);
+}
 numbersContainer.addEventListener("click", (event) => {
     //user can click on the gap between the buttons and that can cause the click event to get
     //activated on container. SO, this following validation explicitly let only numbers to pass 
     //through
     if (!event.target.matches(".number")) {
         return;
+    }
+    if (calculatorAboveDisplay.textContent === "Result" ||
+        calculatorBelowDisplay.textContent === "MATH ERROR") {
+        clearButton(calculatorAboveDisplay, calculatorBelowDisplay);
     }
     updateCalculatorDisplayWithDigit(event, calculatorBelowDisplay);
 });
@@ -18,10 +37,12 @@ operatorsContainer.addEventListener("click", (event) => {
     if (!event.target.matches(".operator")) {
         return;
     }
-    if (!operatorValidation(calculatorBelowDisplay) && !operatorValidation(calculatorAboveDisplay)) {
+    if (!operatorValidation(calculatorBelowDisplay) &&
+        !operatorValidation(calculatorAboveDisplay)) {
         performCalculation(calculatorBelowDisplay, calculatorAboveDisplay);
     }
-    if (!operatorValidation(calculatorBelowDisplay) && !event.target.matches(".equal")) {
+    if (!operatorValidation(calculatorBelowDisplay) &&
+        !event.target.matches(".equal")) {
         updateCalculatorDisplayWithOperator(event, calculatorAboveDisplay, calculatorBelowDisplay);
     }
 });
@@ -38,7 +59,7 @@ function performCalculation(calculatorBelowDisplay, calculatorAboveDisplay) {
     let firstNumber = +numberAndOperator[0];
     let operator = numberAndOperator[1];
     let secondNumber = +calculatorBelowDisplay.textContent;
-    calculatorAboveDisplay.textContent = "";
+    calculatorAboveDisplay.textContent = "Result";
     calculatorBelowDisplay.textContent = operate(firstNumber, secondNumber, operator);
 }
 function clearDisplay(display) {
