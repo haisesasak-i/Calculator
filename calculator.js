@@ -3,6 +3,10 @@ const operatorsContainer = document.querySelector(".operators");
 const calculatorBelowDisplay = document.querySelector(".below-display");
 const calculatorAboveDisplay = document.querySelector(".above-display");
 const clearAndDelete = document.querySelector(".clear-delete");
+window.addEventListener("keydown", (event) => {
+
+    
+});
 clearAndDelete.addEventListener("click", (event) => {
     if (event.target.matches(".clear")) {
 
@@ -120,5 +124,4 @@ function operatorValidation(display) {
     //and then add symbol of operator , so if user taps operator without entering number then below display
     //will always be empty
 }
-
 

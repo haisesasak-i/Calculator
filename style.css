@@ -37,6 +37,10 @@ div.display {
     flex-direction: column;
 }
 
+.numbers:focus {
+    outline: 3px solid red;
+}
+
 div.calculator {
     width: 500px;
     height: 700px;
@@ -48,7 +52,7 @@ div.calculator {
 }
 
 .display {
-    outline: 3px solid green;
+
     border: 2px solid #45464c;
     height: 150px;
     border-radius: 12px;
