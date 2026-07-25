@@ -71,4 +71,3 @@ The upper display doubling as a running "you entered this" line (e.g. showing `1
 - HTML
 - CSS (Flexbox layout)
 - Vanilla JavaScript (no libraries/frameworks)
-
