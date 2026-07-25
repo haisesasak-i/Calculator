@@ -99,6 +99,10 @@ function operatorInput(calculatorAboveDisplay, calculatorBelowDisplay, operator)
         operator != "=" && calculatorBelowDisplay.textContent !== "MATH ERROR") {
         updateCalculatorDisplayWithOperator(operator, calculatorAboveDisplay, calculatorBelowDisplay);
     }
+    else if (!operatorValidation(calculatorAboveDisplay) && operatorValidation(calculatorBelowDisplay) && operator != "=") {
+        calculatorAboveDisplay.textContent = calculatorAboveDisplay.textContent.slice(0, -1) + operator;
+    }
+
 
 }
 operatorsContainer.addEventListener("click", (event) => {
