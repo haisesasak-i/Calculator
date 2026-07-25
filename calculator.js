@@ -18,10 +18,13 @@ function clearButton(calculatorAboveDisplay, calculatorBelowDisplay) {
     clearDisplay(calculatorBelowDisplay);
 }
 function deleteButton(calculatorAboveDisplay, calculatorBelowDisplay) {
-    if (calculatorBelowDisplay.textContent && calculatorBelowDisplay.textContent != "MATH ERROR") {
+    if (resultMathErrorStringChecker(calculatorAboveDisplay, calculatorBelowDisplay)) {
+        return;
+    }
+    else if (calculatorBelowDisplay.textContent) {
         calculatorBelowDisplay.textContent = calculatorBelowDisplay.textContent.slice(0, -1);
     }
-    else if (calculatorAboveDisplay.textContent && calculatorAboveDisplay.textContent != ("Result")) {
+    else if (calculatorAboveDisplay.textContent) {
         calculatorBelowDisplay.textContent = calculatorAboveDisplay.textContent.slice(0, -1).trimEnd();
         clearDisplay(calculatorAboveDisplay);
     }
@@ -33,12 +36,15 @@ numbersContainer.addEventListener("click", (event) => {
     if (!event.target.matches(".number")) {
         return;
     }
-    if (calculatorAboveDisplay.textContent === "Result" ||
-        calculatorBelowDisplay.textContent === "MATH ERROR") {
+    if (resultMathErrorStringChecker(calculatorAboveDisplay, calculatorBelowDisplay)) {
         clearButton(calculatorAboveDisplay, calculatorBelowDisplay);
     }
     updateCalculatorDisplayWithDigit(event, calculatorBelowDisplay);
 });
+function resultMathErrorStringChecker(calculatorAboveDisplay, calculatorBelowDisplay) {
+    return calculatorAboveDisplay.textContent === "Result" ||
+        calculatorBelowDisplay.textContent === "MATH ERROR"
+}
 function updateCalculatorDisplayWithDigit(event, calculatorBelowDisplay) {
     let textContent = calculatorBelowDisplay.textContent;
     if (event.target.textContent == ".") {
@@ -51,7 +57,7 @@ function updateCalculatorDisplayWithDigit(event, calculatorBelowDisplay) {
     calculatorBelowDisplay.textContent = textContent + event.target.textContent;
 }
 operatorsContainer.addEventListener("click", (event) => {
-    if (!event.target.matches(".operator")) {
+    if (!event.target.matches(".operator") || resultMathErrorStringChecker(calculatorAboveDisplay, calculatorBelowDisplay)) {
         return;
     }
     if (!operatorValidation(calculatorBelowDisplay) &&
