@@ -22,8 +22,9 @@ window.addEventListener("keydown", (event) => {
     else if (allowedKeyboardKeys.delete == keyboardInput) {
         deleteButton(calculatorAboveDisplay, calculatorBelowDisplay);
     }
-    else if(allowedKeyboardKeys.operators.includes(keyboardInput)){
-
+    else if (allowedKeyboardKeys.operators.includes(keyboardInput) || keyboardInput == "Enter") {
+        if (keyboardInput == "Enter") keyboardInput = "=";
+        operatorInput(calculatorAboveDisplay, calculatorBelowDisplay, keyboardInput);
     }
     return;
 
@@ -85,11 +86,8 @@ function updateCalculatorDisplayWithDigit(input, calculatorBelowDisplay) {
     }
     calculatorBelowDisplay.textContent = textContent + input;
 }
-function operatorInput(calculatorAboveDisplay,calculatorBelowDisplay,operator){
-    git 
-}
-operatorsContainer.addEventListener("click", (event) => {
-    if (!event.target.matches(".operator") || resultMathErrorStringChecker(calculatorAboveDisplay, calculatorBelowDisplay)) {
+function operatorInput(calculatorAboveDisplay, calculatorBelowDisplay, operator) {
+    if (resultMathErrorStringChecker(calculatorAboveDisplay, calculatorBelowDisplay)) {
         return;
     }
     if (!operatorValidation(calculatorBelowDisplay) &&
@@ -97,15 +95,23 @@ operatorsContainer.addEventListener("click", (event) => {
         performCalculation(calculatorBelowDisplay, calculatorAboveDisplay);
     }
     if (!operatorValidation(calculatorBelowDisplay) &&
-        !event.target.matches(".equal") && calculatorBelowDisplay.textContent !== "MATH ERROR") {
-        updateCalculatorDisplayWithOperator(event, calculatorAboveDisplay, calculatorBelowDisplay);
+        operator != "=" && calculatorBelowDisplay.textContent !== "MATH ERROR") {
+        updateCalculatorDisplayWithOperator(operator, calculatorAboveDisplay, calculatorBelowDisplay);
     }
+
+}
+operatorsContainer.addEventListener("click", (event) => {
+    if (!event.target.matches(".operator")) {
+        return;
+    }
+    operatorInput(calculatorAboveDisplay, calculatorBelowDisplay, event.target.textContent);
+
 });
-function updateCalculatorDisplayWithOperator(event, calculatorAboveDisplay, calculatorBelowDisplay) {
+function updateCalculatorDisplayWithOperator(operator, calculatorAboveDisplay, calculatorBelowDisplay) {
     //This transfer of text content form below display of calculator to above will help in checking things like 
     //if there is only one operator or one point is used with a number
     //The use of space is because it will help in extracting multi digits using split method like 1000 + 
-    calculatorAboveDisplay.textContent = `${calculatorBelowDisplay.textContent} ${event.target.textContent}`;
+    calculatorAboveDisplay.textContent = `${calculatorBelowDisplay.textContent} ${operator}`;
     clearDisplay(calculatorBelowDisplay);
 
 }
