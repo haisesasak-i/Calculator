@@ -88,7 +88,7 @@ function updateCalculatorDisplayWithDigit(input, calculatorBelowDisplay) {
     calculatorBelowDisplay.textContent = textContent + input;
 }
 function operatorInput(calculatorAboveDisplay, calculatorBelowDisplay, operator) {
-    if (calculatorBelowDisplay == "MATH ERROR") {
+     if (calculatorBelowDisplay.textContent === "MATH ERROR") {
         return;
     }
     if (calculatorAboveDisplay.textContent == "Result") {
