@@ -88,8 +88,13 @@ function updateCalculatorDisplayWithDigit(input, calculatorBelowDisplay) {
     calculatorBelowDisplay.textContent = textContent + input;
 }
 function operatorInput(calculatorAboveDisplay, calculatorBelowDisplay, operator) {
-    if (resultMathErrorStringChecker(calculatorAboveDisplay, calculatorBelowDisplay)) {
+    if (calculatorBelowDisplay == "MATH ERROR") {
         return;
+    }
+    if (calculatorAboveDisplay.textContent == "Result") {
+
+        updateCalculatorDisplayWithOperator(operator, calculatorAboveDisplay, calculatorBelowDisplay);
+
     }
     if (!operatorValidation(calculatorBelowDisplay) &&
         !operatorValidation(calculatorAboveDisplay)) {

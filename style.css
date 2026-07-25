@@ -51,6 +51,10 @@ div.calculator {
     gap: 10px
 }
 
+.below-display {
+    mask-image: linear-gradient(to left, transparent 0%, black 20px, black 100%);
+}
+
 .display {
 
     border: 2px solid #45464c;
