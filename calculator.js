@@ -22,7 +22,10 @@ window.addEventListener("keydown", (event) => {
     else if (allowedKeyboardKeys.delete == keyboardInput) {
         deleteButton(calculatorAboveDisplay, calculatorBelowDisplay);
     }
-   
+    else if(allowedKeyboardKeys.operators.includes(keyboardInput)){
+
+    }
+    return;
 
 });
 clearAndDelete.addEventListener("click", (event) => {
@@ -81,6 +84,9 @@ function updateCalculatorDisplayWithDigit(input, calculatorBelowDisplay) {
         }
     }
     calculatorBelowDisplay.textContent = textContent + input;
+}
+function operatorInput(calculatorAboveDisplay,calculatorBelowDisplay,operator){
+    git 
 }
 operatorsContainer.addEventListener("click", (event) => {
     if (!event.target.matches(".operator") || resultMathErrorStringChecker(calculatorAboveDisplay, calculatorBelowDisplay)) {
