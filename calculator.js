@@ -23,7 +23,8 @@ window.addEventListener("keydown", (event) => {
         deleteButton(calculatorAboveDisplay, calculatorBelowDisplay);
     }
     else if (allowedKeyboardKeys.operators.includes(keyboardInput) || keyboardInput == "Enter") {
-        if (keyboardInput == "Enter") keyboardInput = "=";
+        const keyToSymbol = { "*": "×", "x": "×", "/": "÷", "Enter": "=" };
+        if (keyToSymbol[keyboardInput]) keyboardInput = keyToSymbol[keyboardInput];
         operatorInput(calculatorAboveDisplay, calculatorBelowDisplay, keyboardInput);
     }
     return;
@@ -121,7 +122,7 @@ function performCalculation(calculatorBelowDisplay, calculatorAboveDisplay) {
     let operator = numberAndOperator[1];
     let secondNumber = +calculatorBelowDisplay.textContent;
     calculatorAboveDisplay.textContent = "Result";
-    calculatorBelowDisplay.textContent = operate(firstNumber, secondNumber, operator);
+    calculatorBelowDisplay.textContent = roundResult(operate(firstNumber, secondNumber, operator));
 }
 function clearDisplay(display) {
     display.textContent = "";
@@ -158,4 +159,7 @@ function operatorValidation(display) {
     //and then add symbol of operator , so if user taps operator without entering number then below display
     //will always be empty
 }
-
+function roundResult(num) {
+    if (typeof num !== "number") return num; // preserves "MATH ERROR" string
+    return parseFloat(num.toPrecision(10)); // 10 significant digits, trims trailing zeros
+}
