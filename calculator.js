@@ -1,11 +1,23 @@
 const numbersContainer = document.querySelector(".numbers");
+const allowedKeyboardKeys = {
+    "numbers": "0123456789.",
+    "operators": "+-/*x=",
+    "clear": "c",
+    "delete": "Backspace"
+
+
+}
 const operatorsContainer = document.querySelector(".operators");
 const calculatorBelowDisplay = document.querySelector(".below-display");
 const calculatorAboveDisplay = document.querySelector(".above-display");
 const clearAndDelete = document.querySelector(".clear-delete");
 window.addEventListener("keydown", (event) => {
+    let keyboardInput = event.key;
+    if (allowedKeyboardKeys.numbers.includes(keyboardInput)) {
+        numberInput(calculatorAboveDisplay, calculatorBelowDisplay, event.key);
+    }
 
-    
+
 });
 clearAndDelete.addEventListener("click", (event) => {
     if (event.target.matches(".clear")) {
@@ -40,25 +52,29 @@ numbersContainer.addEventListener("click", (event) => {
     if (!event.target.matches(".number")) {
         return;
     }
+    numberInput(calculatorAboveDisplay, calculatorBelowDisplay, event.target.textContent);
+
+});
+function numberInput(calculatorAboveDisplay, calculatorBelowDisplay, input) {
     if (resultMathErrorStringChecker(calculatorAboveDisplay, calculatorBelowDisplay)) {
         clearButton(calculatorAboveDisplay, calculatorBelowDisplay);
     }
-    updateCalculatorDisplayWithDigit(event, calculatorBelowDisplay);
-});
+    updateCalculatorDisplayWithDigit(input, calculatorBelowDisplay);
+}
 function resultMathErrorStringChecker(calculatorAboveDisplay, calculatorBelowDisplay) {
     return calculatorAboveDisplay.textContent === "Result" ||
         calculatorBelowDisplay.textContent === "MATH ERROR"
 }
-function updateCalculatorDisplayWithDigit(event, calculatorBelowDisplay) {
+function updateCalculatorDisplayWithDigit(input, calculatorBelowDisplay) {
     let textContent = calculatorBelowDisplay.textContent;
-    if (event.target.textContent == ".") {
+    if (input == ".") {
         if (!calculatorBelowDisplay.textContent)
             textContent = textContent + "0";
         else if (calculatorBelowDisplay.textContent.includes(".")) {
             return;
         }
     }
-    calculatorBelowDisplay.textContent = textContent + event.target.textContent;
+    calculatorBelowDisplay.textContent = textContent + input;
 }
 operatorsContainer.addEventListener("click", (event) => {
     if (!event.target.matches(".operator") || resultMathErrorStringChecker(calculatorAboveDisplay, calculatorBelowDisplay)) {
