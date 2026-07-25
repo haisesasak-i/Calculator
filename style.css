@@ -18,7 +18,16 @@ body {
 }
 
 .above-display,
-.below-display {}
+.below-display {
+    overflow: auto;
+    /* Hides scrollbar in Firefox */
+    scrollbar-width: none;
+
+    /* Hides scrollbar in IE and legacy Edge */
+    -ms-overflow-style: none;
+
+
+}
 
 div.calculator,
 div.display {
@@ -36,20 +45,30 @@ div.calculator {
 }
 
 .display {
+    outline: 3px solid green;
     border: 2px solid #45464c;
     height: 150px;
     border-radius: 12px;
     background-color: #17181c;
     padding: 12px;
     box-sizing: content-box;
-    overflow: auto;
     justify-content: space-between;
+
+}
+
+/* 
+Hides scrollbar in Chrome,
+Safari,
+and Opera  */
+.above-display::-webkit-scrollbar,
+.below-display::-webkit-scrollbar {
+    display: none;
 }
 
 .display .above-display,
 .display .below-display {
     text-align: right;
-    padding: 8px;
+    padding: 8px 0px;
     Letter-spacing: 0.5px;
 }
 
