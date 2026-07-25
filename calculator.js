@@ -40,7 +40,15 @@ numbersContainer.addEventListener("click", (event) => {
     updateCalculatorDisplayWithDigit(event, calculatorBelowDisplay);
 });
 function updateCalculatorDisplayWithDigit(event, calculatorBelowDisplay) {
-    calculatorBelowDisplay.textContent = calculatorBelowDisplay.textContent + event.target.textContent;
+    let textContent = calculatorBelowDisplay.textContent;
+    if (event.target.textContent == ".") {
+        if (!calculatorBelowDisplay.textContent)
+            textContent = textContent + "0";
+        else if (calculatorBelowDisplay.textContent.includes(".")) {
+            return;
+        }
+    }
+    calculatorBelowDisplay.textContent = textContent + event.target.textContent;
 }
 operatorsContainer.addEventListener("click", (event) => {
     if (!event.target.matches(".operator")) {
@@ -51,7 +59,7 @@ operatorsContainer.addEventListener("click", (event) => {
         performCalculation(calculatorBelowDisplay, calculatorAboveDisplay);
     }
     if (!operatorValidation(calculatorBelowDisplay) &&
-        !event.target.matches(".equal")) {
+        !event.target.matches(".equal") && calculatorBelowDisplay.textContent !== "MATH ERROR") {
         updateCalculatorDisplayWithOperator(event, calculatorAboveDisplay, calculatorBelowDisplay);
     }
 });

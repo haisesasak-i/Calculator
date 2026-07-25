@@ -17,6 +17,9 @@ body {
     height: 100vh;
 }
 
+.above-display,
+.below-display {}
+
 div.calculator,
 div.display {
     flex-direction: column;
@@ -38,7 +41,8 @@ div.calculator {
     border-radius: 12px;
     background-color: #17181c;
     padding: 12px;
-
+    box-sizing: content-box;
+    overflow: auto;
     justify-content: space-between;
 }
 
@@ -152,6 +156,7 @@ button {
     border-radius: 12px;
     font-size: 30px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .operators>button {
