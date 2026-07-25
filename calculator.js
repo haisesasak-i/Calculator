@@ -1,7 +1,7 @@
 const numbersContainer = document.querySelector(".numbers");
 const allowedKeyboardKeys = {
     "numbers": "0123456789.",
-    "operators": "+-/*x=",
+    "operators": "+-/*x=",//x and * as calculator displays x as multiply
     "clear": "c",
     "delete": "Backspace"
 
@@ -16,7 +16,13 @@ window.addEventListener("keydown", (event) => {
     if (allowedKeyboardKeys.numbers.includes(keyboardInput)) {
         numberInput(calculatorAboveDisplay, calculatorBelowDisplay, event.key);
     }
-
+    else if (allowedKeyboardKeys.clear == keyboardInput) {
+        clearButton(calculatorAboveDisplay, calculatorBelowDisplay);
+    }
+    else if (allowedKeyboardKeys.delete == keyboardInput) {
+        deleteButton(calculatorAboveDisplay, calculatorBelowDisplay);
+    }
+   
 
 });
 clearAndDelete.addEventListener("click", (event) => {
