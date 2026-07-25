@@ -207,3 +207,8 @@ button {
 .delete:hover {
     background-color: #2D3440;
 }
+
+.below-display::-webkit-scrollbar,
+.above-display::-webkit-scrollbar {
+    display: none;
+}
